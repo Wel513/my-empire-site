@@ -25,7 +25,7 @@
         .specs-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         .specs-table td { padding: 12px 0; border-bottom: 1px solid #222; font-size: 14px; }
         .specs-table td:first-child { color: var(--gold); text-transform: uppercase; font-size: 11px; width: 40%; }
-        .contact-link { color: black; text-decoration: none; display: block; width: 100%; }
+        .contact-link { color: black; text-decoration: none; font-weight: bold; font-size: 16px; }
     </style>
 </head>
 <body>
@@ -33,70 +33,3 @@
 <header>
     <h1>CHROME GENEVE</h1>
     <p style="color: #444; letter-spacing: 4px; font-size: 10px; text-transform: uppercase; margin-top: 15px;">Превосходство в каждой секунде вашей империи</p>
-</header>
-
-<div class="container" id="main-page">
-    <div class="grid">
-        <div class="card">
-            <div class="img-box">HERITAGE</div>
-            <h3>HERITAGE GOLD</h3>
-            <button class="btn" onclick="openMe('HERITAGE GOLD', '450.000₽', 'Воплощение вековых традиций в современном исполнении. Heritage Gold — это не просто часы, а символ преемственности власти и незыблемого статуса. Корпус выполнен из цельного слитка 18-каратного желтого золота, а циферблат украшен ручным гильошированием.', {'Механизм': 'Мануфактурный калибр CH-01', 'Запас хода': '72 часа', 'Стекло': 'Двойной сапфир', 'Ремешок': 'Кожа миссисипского аллигатора'})">ПОДРОБНЕЕ</button>
-        </div>
-        <div class="card">
-            <div class="img-box">OBSIDIAN</div>
-            <h3>OBSIDIAN NIGHT</h3>
-            <button class="btn" onclick="openMe('OBSIDIAN NIGHT', '380.000₽', 'Часы для тех, кто принимает решения в тишине кабинетов и под светом ночных мегаполисов. Агрессивный матовый титан с алмазным напылением (DLC) делает эту модель практически неуязвимой, как и волю её владельца.', {'Корпус': 'Титан Grade 5 с DLC покрытием', 'Водозащита': '100 метров', 'Функции': 'Дата, GMT (второй часовой пояс)', 'Диаметр': '44 мм'})">ПОДРОБНЕЕ</button>
-        </div>
-        <div class="card">
-            <div class="img-box">ADMIRAL</div>
-            <h3>ADMIRAL STEEL</h3>
-            <button class="btn" onclick="openMe('ADMIRAL STEEL', '260.000₽', 'Стальная решительность и безупречная точность. Модель Admiral создана для лидеров, чей день наполнен динамикой и экспансией. Сочетание полированной и сатинированной стали 904L создает игру света, притягивающую взгляды.', {'Механизм': 'Автоматический хронограф', 'Материал': 'Хирургическая сталь 904L', 'Особенности': 'Керамический безель', 'Застежка': 'Система быстрой регулировки'})">ПОДРОБНЕЕ</button>
-        </div>
-    </div>
-</div>
-
-<div class="container hidden" id="page-details">
-    <div class="back" onclick="closeMe()">← Вернуться в каталог</div>
-    <div class="details-content">
-        <div class="img-box" style="flex:1; height: 450px; background: linear-gradient(180deg, #1a1a1a, #0a0a0a);">CHROME VISUAL</div>
-        <div style="flex:1;">
-            <h2 id="view-title" style="color:var(--gold); font-size: 38px; margin-top: 0; letter-spacing: 2px;"></h2>
-            <p id="view-price" style="font-size: 26px; color: #fff; margin-bottom: 20px;"></p>
-            <p id="view-desc" style="color:#888; line-height: 1.8; font-size: 16px;"></p>
-            <table class="specs-table" id="view-specs"></table>
-            <button id="contact-btn" class="btn" style="width:100%; margin-top: 40px; background: var(--gold); color: black; font-weight: bold; font-size: 14px;" onclick="contactUs()">ЗАБРОНИРОВАТЬ ЭКЗЕМПЛЯР</button>
-        </div>
-    </div>
-</div>
-
-<script>
-    function openMe(name, price, desc, specs) {
-        document.getElementById('view-title').innerHTML = name;
-        document.getElementById('view-price').innerHTML = price;
-        document.getElementById('view-desc').innerHTML = desc;
-        
-        // Сброс кнопки при открытии нового товара
-        const btn = document.getElementById('contact-btn');
-        btn.innerHTML = "ЗАБРОНИРОВАТЬ ЭКЗЕМПЛЯР";
-        btn.style.background = "var(--gold)";
-
-        const table = document.getElementById('view-specs');
-        table.innerHTML = "";
-        for (let key in specs) {
-            table.innerHTML += <tr><td>${key}</td><td>${specs[key]}</td></tr>;
-        }
-
-        document.getElementById('main-page').classList.add('hidden');
-        document.getElementById('page-details').classList.remove('hidden');
-        window.scrollTo(0,0);
-    }
-
-    function closeMe() {
-        document.getElementById('page-details').classList.add('hidden');
-        document.getElementById('main-page').classList.remove('hidden');
-    }
-
-    function contactUs() {
-        const btn = document.getElementById('contact-btn');
-        // Показываем телефон и делаем его кликабельным
-        btn.innerHTML = '<a href="tel:+793799
