@@ -2,25 +2,22 @@
 <html lang="ru" class="notranslate" translate="no">
 <head>
     <meta charset="UTF-8">
-    <meta name="google" content="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHROME GENEVE</title>
     <style>
         :root { --gold: #c5a059; --dark: #0a0a0a; --white: #ffffff; }
         body { margin: 0; font-family: 'Georgia', serif; background: var(--dark); color: var(--white); }
         header { padding: 60px 20px; text-align: center; border-bottom: 1px solid #222; }
-        h1 { letter-spacing: 12px; color: var(--gold); text-transform: uppercase; margin: 0; font-weight: 400; }
+        h1 { letter-spacing: 12px; color: var(--gold); text-transform: uppercase; margin: 0; }
         .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         .card { background: #111; border: 1px solid #222; padding: 30px; text-align: center; transition: 0.3s; }
-        .card:hover { border-color: var(--gold); }
-        .watch-img { width: 100%; height: 280px; object-fit: cover; margin-bottom: 20px; border: 1px solid #1a1a1a; }
+        .watch-img { width: 100%; height: 280px; object-fit: contain; background: #000; margin-bottom: 20px; }
         .btn { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 12px 30px; cursor: pointer; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; }
         .btn:hover { background: var(--gold); color: #000; }
         .hidden { display: none !important; }
         .details-content { display: flex; flex-wrap: wrap; gap: 60px; }
         .back { cursor: pointer; color: #666; display: inline-block; margin-bottom: 30px; text-transform: uppercase; font-size: 12px; }
-        .back:hover { color: var(--gold); }
         .contact-link { color: black; text-decoration: none; font-weight: bold; }
     </style>
 </head>
@@ -33,27 +30,27 @@
 <div class="container" id="main-page">
     <div class="grid">
         <div class="card">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/2676181885909637942_0" class="watch-img">
+            <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&q=80&w=600" class="watch-img">
             <h3>HERITAGE GOLD</h3>
-            <button class="btn" onclick="showItem('HERITAGE GOLD', '450.000₽', 'Корпус из золота 18К. Традиции вашей империи.', 'http://googleusercontent.com/image_collection/image_retrieval/2676181885909637942_0')">ПОДРОБНЕЕ</button>
+            <button class="btn" onclick="showItem('HERITAGE GOLD', '450.000₽', 'Золото 18К. Мануфактурный калибр.', 'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&q=80&w=800')">ПОДРОБНЕЕ</button>
         </div>
         <div class="card">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/3781301894531950110_1" class="watch-img">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=600" class="watch-img">
             <h3>OBSIDIAN NIGHT</h3>
-            <button class="btn" onclick="showItem('OBSIDIAN NIGHT', '380.000₽', 'Черный титан DLC. Власть над временем и тенью.', 'http://googleusercontent.com/image_collection/image_retrieval/3781301894531950110_1')">ПОДРОБНЕЕ</button>
+            <button class="btn" onclick="showItem('OBSIDIAN NIGHT', '380.000₽', 'Черный титан. Стойкость к любым испытаниям.', 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800')">ПОДРОБНЕЕ</button>
         </div>
         <div class="card">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/17200051356917385429_0" class="watch-img">
+            <img src="https://images.unsplash.com/photo-1547996160-81dfa63595dd?auto=format&fit=crop&q=80&w=600" class="watch-img">
             <h3>ADMIRAL STEEL</h3>
-            <button class="btn" onclick="showItem('ADMIRAL STEEL', '260.000₽', 'Сталь 904L. Решительность в каждом движении.', 'http://googleusercontent.com/image_collection/image_retrieval/17200051356917385429_0')">ПОДРОБНЕЕ</button>
+            <button class="btn" onclick="showItem('ADMIRAL STEEL', '260.000₽', 'Хирургическая сталь. Точность адмиральского уровня.', 'https://images.unsplash.com/photo-1547996160-81dfa63595dd?auto=format&fit=crop&q=80&w=800')">ПОДРОБНЕЕ</button>
         </div>
     </div>
 </div>
 
 <div class="container hidden" id="details-page">
-    <div class="back" onclick="hideItem()">← Назад</div>
+    <div class="back" onclick="hideItem()">← Назад в каталог</div>
     <div class="details-content">
-        <img id="d-img" src="" class="watch-img" style="flex:1; height: 450px;">
+        <img id="d-img" src="" class="watch-img" style="flex:1; height: 450px; object-fit: contain;">
         <div style="flex:1;">
             <h2 id="d-title" style="color:var(--gold); font-size: 38px; margin-top: 0;"></h2>
             <p id="d-price" style="font-size: 26px;"></p>
