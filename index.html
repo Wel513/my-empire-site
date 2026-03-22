@@ -13,81 +13,83 @@
 
         body {
             margin: 0;
-            font-family: 'Georgia', serif;
+            font-family: 'Helvetica', 'Arial', sans-serif;
             background-color: var(--dark);
             color: var(--light);
             line-height: 1.6;
         }
 
         header {
-            padding: 40px 20px;
+            padding: 60px 20px;
             text-align: center;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #222;
         }
 
         header h1 {
-            letter-spacing: 8px;
+            letter-spacing: 10px;
             text-transform: uppercase;
             color: var(--gold);
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
+            font-weight: 300;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 50px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
             padding: 0 20px;
         }
 
-        .catalog-page, .details-page {
-            transition: opacity 0.3s ease;
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
         }
 
         .hidden { display: none; }
 
         .watch-card {
             background: #111;
-            border: 1px solid #222;
-            padding: 20px;
+            border: 1px solid #1a1a1a;
+            padding: 30px;
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.4s ease;
         }
 
         .watch-card:hover {
             border-color: var(--gold);
-            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .watch-image {
+        .watch-placeholder {
             width: 100%;
             height: 250px;
-            background: #1a1a1a; /* Заглушка под фото */
-            margin-bottom: 20px;
+            background: linear-gradient(45deg, #1a1a1a, #222);
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #444;
-            font-size: 0.8rem;
-            text-transform: uppercase;
+            color: #333;
+            font-weight: bold;
+            letter-spacing: 2px;
         }
 
         .watch-card h3 {
-            margin: 15px 0;
-            letter-spacing: 2px;
+            margin: 20px 0;
+            letter-spacing: 3px;
+            font-weight: 400;
+            text-transform: uppercase;
         }
 
         .btn {
             background: transparent;
             color: var(--gold);
             border: 1px solid var(--gold);
-            padding: 10px 25px;
+            padding: 12px 30px;
             cursor: pointer;
             text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
             transition: 0.3s;
         }
 
@@ -97,97 +99,100 @@
         }
 
         /* Страница деталей */
-        .details-container {
+        .details-view {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .details-flex {
             display: flex;
             flex-wrap: wrap;
-            gap: 50px;
-            align-items: center;
-            margin-top: 30px;
+            gap: 60px;
+            margin-top: 40px;
         }
 
         .details-info { flex: 1; min-width: 300px; }
-        .details-info h2 { color: var(--gold); font-size: 2rem; margin-bottom: 10px; }
-        .price { font-size: 1.5rem; color: #fff; margin-bottom: 20px; }
+        .details-info h2 { color: var(--gold); font-size: 2.5rem; margin-top: 0; letter-spacing: 2px; }
+        .price { font-size: 1.8rem; color: #fff; margin-bottom: 30px; }
         
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        table td { padding: 10px; border-bottom: 1px solid #222; }
-        table td:first-child { color: var(--gold); font-weight: bold; width: 40%; }
+        table { width: 100%; border-collapse: collapse; margin: 30px 0; }
+        table td { padding: 15px 0; border-bottom: 1px solid #222; }
+        table td:first-child { color: var(--gold); text-transform: uppercase; font-size: 0.8rem; width: 40%; }
 
-        .back-link {
+        .back-btn {
             display: inline-block;
-            margin-bottom: 30px;
-            color: #888;
+            margin-bottom: 40px;
+            color: #666;
             text-decoration: none;
             cursor: pointer;
+            font-size: 0.9rem;
         }
+        .back-btn:hover { color: var(--gold); }
     </style>
 </head>
 <body>
 
 <header>
     <h1>CHROME GENEVE</h1>
-    <p style="color: #666; font-style: italic;">Имперское качество. Вне времени.</p>
+    <p style="color: #444; letter-spacing: 3px; text-transform: uppercase; font-size: 0.7rem; margin-top: 10px;">Imperial Watchmakers since 2026</p>
 </header>
+<div class="container" id="catalog-section">
+    <div class="catalog-grid">
+        <div class="watch-card">
+            <div class="watch-placeholder">HERITAGE</div>
+            <h3>Heritage Gold</h3>
+            <button class="btn" onclick="showProduct('Heritage Gold', 'Классика, не подвластная времени. Корпус из желтого золота, матовый циферблат и совершенство в каждой детали.', '450,000₽', {'Механизм': 'Калибр CH-01', 'Запас хода': '72 часа', 'Стекло': 'Сапфир'})">Подробнее</button>
+        </div>
 
-<div class="container" id="catalog-page">
-    <div class="watch-card">
-        <div class="watch-image">Classic Heritage</div>
-        <h3>HERITAGE GOLD</h3>
-        <button class="btn" onclick="openDetails('Heritage Gold', 'Воплощение классики в корпусе из 18-каратного золота. Эти часы подчеркивают статус и непоколебимую уверенность владельца.', '450,000₽', {'Механизм': 'Автоподзавод', 'Запас хода': '72 часа', 'Стекло': 'Сапфировое'})">Подробнее</button>
-    </div>
-    <div class="watch-card">
-        <div class="watch-image">Obsidian Black</div>
-        <h3>OBSIDIAN NIGHT</h3>
-        <button class="btn" onclick="openDetails('Obsidian Night', 'Черный матовый титан и глубокий черный циферблат. Выбор тех, кто предпочитает скрытую мощь.', '320,000₽', {'Корпус': 'Титан', 'Ремешок': 'Кожа аллигатора', 'Водозащита': '100м'})">Подробнее</button>
-    </div>
-
-    <div class="watch-card">
-        <div class="watch-image">Admiral Silver</div>
-        <h3>ADMIRAL STEEL</h3>
-        <button class="btn" onclick="openDetails('Admiral Steel', 'Стальная мощь и точность хронографа. Идеальный баланс между спортом и деловым стилем.', '280,000₽', {'Диаметр': '42мм', 'Функции': 'Хронограф, Дата', 'Материал': 'Сталь 316L'})">Подробнее</button>
+        <div class="watch-card">
+            <div class="watch-placeholder">OBSIDIAN</div>
+            <h3>Obsidian Night</h3>
+            <button class="btn" onclick="showProduct('Obsidian Night', 'Черный титан и угольный циферблат. Часы для тех, кто правит ночью.', '320,000₽', {'Корпус': 'Титан DLC', 'Ремешок': 'Аллигатор', 'Водозащита': '100м'})">Подробнее</button>
+        </div>
     </div>
 </div>
 
-<div class="container hidden" id="details-page">
-    <a class="back-link" onclick="closeDetails()">← Назад в каталог</a>
-    <div class="details-container">
-        <div class="watch-image" id="details-img" style="height: 400px; flex: 1;">IMAGE</div>
-        <div class="details-info">
-            <h2 id="details-title">Название модели</h2>
-            <p class="price" id="details-price">Цена</p>
-            <p id="details-desc">Описание товара...</p>
-            <table id="details-table"></table>
-            <button class="btn" style="background: var(--gold); color: black; margin-top: 20px;">Заказать в империю</button>
+<div class="container hidden" id="details-section">
+    <a class="back-btn" onclick="hideProduct()">← Вернуться в каталог</a>
+    <div class="details-view">
+        <div class="details-flex">
+            <div class="watch-placeholder" id="p-img" style="height: 450px; flex: 1;">IMAGE</div>
+            <div class="details-info">
+                <h2 id="p-title">Название</h2>
+                <div class="price" id="p-price">0₽</div>
+                <p id="p-desc" style="color: #888; font-size: 1.1rem;"></p>
+                <table id="p-table"></table>
+                <button class="btn" style="background: var(--gold); color: #000; width: 100%; margin-top: 20px; font-weight: bold;">Связаться с мануфактурой</button>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    const catalogPage = document.getElementById('catalog-page');
-    const detailsPage = document.getElementById('details-page');
+    function showProduct(name, desc, price, specs) {
+        document.getElementById('p-title').innerText = name;
+        document.getElementById('p-desc').innerText = desc;
+        document.getElementById('p-price').innerText = price;
+        document.getElementById('p-img').innerText = name;
 
-    function openDetails(name, desc, price, stats) {
-        document.getElementById('details-title').innerText = name;
-        document.getElementById('details-desc').innerText = desc;
-        document.getElementById('details-price').innerText = price;
-        document.getElementById('details-img').innerText = name;
-
-        const table = document.getElementById('details-table');
-        table.innerHTML = ""; // Очистка старой таблицы
-        
-        for (const [key, value] of Object.entries(stats)) {
-            const row = <tr><td>${key}</td><td>${value}</td></tr>;
-            table.innerHTML += row;
+        const table = document.getElementById('p-table');
+        table.innerHTML = "";
+        for (const [key, value] of Object.entries(specs)) {
+            table.innerHTML += <tr><td>${key}</td><td>${value}</td></tr>;
         }
 
-        catalogPage.classList.add('hidden');
-        detailsPage.classList.remove('hidden');
-        window.scrollTo(0,0);
+        document.getElementById('catalog-section').classList.add('hidden');
+        document.getElementById('details-section').classList.remove('hidden');
+        window.scrollTo(0, 0);
     }
 
-    function closeDetails() {
-        detailsPage.classList.add('hidden');
-        catalogPage.classList.remove('hidden');
+    function hideProduct() {
+        document.getElementById('details-section').classList.add('hidden');
+        document.getElementById('catalog-section').classList.remove('hidden');
     }
 </script>
 
