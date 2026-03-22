@@ -1,0 +1,46 @@
+},
+        'rangerover': {
+            name: "Range Rover Autobiography",
+            // Текстовый код картинки
+            image: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgODAwIDUwMCI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9IiMzMzMiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9IlNlZ29lIFVJIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZjM5YzEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjdlbSI+UkFOR0UgUk9WRVI8L3RleHQ+PC9zdmc+",
+            desc: "Ультимативный люксовый внедорожник. Autobiography обеспечивает непревзойденный комфорт и проходимость, оставаясь символом статуса.",
+            stats: { "Двигатель": "4.4L V8 Twin-Turbo", "Мощность": "530 л.с.", "0-100 км/ч": "4.6 сек", "Интерьер": "Кожа и дерево", "Цена": "$180,000" }
+        }
+    };
+
+    /* ЛОГИКА ПЕРЕКЛЮЧЕНИЯ СТРАНИЦ */
+    const catalogPage = document.getElementById('catalog-page');
+    const detailsPage = document.getElementById('details-page');
+
+    function openDetails(carId) {
+        const car = carsData[carId];
+        if (!car) return;
+
+        // Заполняем страницу данными
+        document.getElementById('car-details-title').innerText = car.name;
+        document.getElementById('car-details-img').src = car.image;
+        document.getElementById('car-details-desc').innerText = car.desc;
+
+        // Заполняем таблицу характеристик
+        const table = document.getElementById('car-stats-table');
+        table.innerHTML = ""; // Очищаем старую таблицу
+        for (const [key, value] of Object.entries(car.stats)) {
+            const row = <tr><td>${key}:</td><td>${value}</td></tr>;
+            table.innerHTML += row;
+        }
+
+        // Переключаем видимость
+        catalogPage.classList.remove('active');
+        detailsPage.classList.add('active');
+        window.scrollTo(0, 0); // Прокрутка вверх
+    }
+
+    function closeDetails() {
+        // Переключаем обратно
+        detailsPage.classList.remove('active');
+        catalogPage.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
